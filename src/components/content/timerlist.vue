@@ -2,12 +2,12 @@
     <div class="tl">
         <transition name="fade">
             <div v-if="tl_show_timer_list">
-                <ul v-if="tl_cn_flag" class="tl-timerlist">
+                <ul v-if="tl_cn_flag" class="tl-timerlist" :style="style_obj">
                     <li v-for="(item, idx) in timelist" :key="idx" @click.stop="tl_timer_select(item)">
                         <a>{{item + " 分钟"}}</a>
                     </li>
                 </ul>
-                <ul v-else class="tl-timerlist">
+                <ul v-else class="tl-timerlist" :style="style_obj">
                     <li v-for="(item, idx) in timelist" :key="idx" @click.stop="tl_timer_select(item)">
                         <a>{{item + " minutes"}}</a>
                     </li>
@@ -22,6 +22,7 @@ export default {
     data() {
         return {
             timelist:[],
+            style_obj:{}
         }
     },
     props:["tl_cn_flag" , "tl_show_timer_list"],
@@ -29,6 +30,19 @@ export default {
     mounted() {
         this.timelist = [...this.rainville.timers];
         this.timelist.splice(0,1); // 去掉 0
+
+        if (this.pc_or_mobile.is_pc) {
+            this.style_obj = {
+                backgroundColor: "rgba(255,255,255,.2)",
+                color: "#D4D5DA"
+            }
+        }
+        else {
+            this.style_obj = {
+                backgroundColor: "rgb(255,255,255)",
+                color: "#272C32"
+            }
+        }
     },
 
     methods: {

@@ -1,13 +1,13 @@
 <template>
     <transition name="fade" >
-        <div class="ab" v-if="ab_show_about" @click.stop="ab_holder">
+        <div class="ab" v-if="ab_show_about" @click.stop="ab_holder" :style="style_obj">
             <img class="ab-logo ab-left" :src="logo" alt=""> 
             <div class="ab-right-content">
                 <div v-if="ab_cn_flag">
                 <div class="ab-app-name">{{display.zh_hans.app.app_name}}</div>
                 <div class="ab-version">
                     <span>{{display.zh_hans.action.version}}</span>
-                    :1.0.0 [2020.06.13]
+                    :1.0.0
                 </div>
             </div>
             <div v-else>
@@ -17,8 +17,8 @@
                     :1.0.0 [2020.06.13]
                 </div>
             </div>
-            <a href="https://github.com/VArbiter">github.com/VArbiter</a>
-            <a href="mailto:elwinfrederick@163.com">elwinfrederick@163.com</a>
+            <a href="https://github.com/VArbiter" :style="style_a_obj">github.com/VArbiter</a>
+            <a href="mailto:elwinfrederick@163.com" :style="style_a_obj">elwinfrederick@163.com</a>
             </div>
         </div>
     </transition>
@@ -31,7 +31,9 @@ export default {
     data() {
         return {
             display:{},
-            logo:""
+            logo:"",
+            style_obj:{},
+            style_a_obj:{}
         }
     },
     props:["ab_cn_flag" , "ab_show_about"],
@@ -39,6 +41,25 @@ export default {
     mounted() {
         this.display = this.rainville.display;
         this.logo = Logo1024;
+
+        if (this.pc_or_mobile.is_pc) {
+            this.style_obj = {
+                backgroundColor: "rgba(255,255,255,.2)",
+                color: "#D4D5DA"
+            }
+            this.style_a_obj = {
+                color: "#D4D5DA"
+            }
+        }
+        else {
+            this.style_obj = {
+                backgroundColor: "rgb(255,255,255)",
+                color: "#272C32"
+            }
+            this.style_a_obj = {
+                color: "#272C32"
+            }
+        }
     },
 
     methods: {

@@ -31,11 +31,12 @@
                 <span class="hp-main-desc">{{app.app_description}}</span>
             </div>
             <div class="hp-main-poem">
-                <div v-for="(item) in poem">{{item}}</div>
+                <div v-for="(item , idx) in poem" :key="idx">{{item}}</div>
             </div>
         </div>
         <v-weather
-            :wt_cn_flag="cn_flag">
+            :wt_cn_flag="cn_flag"
+            @wt_stop_rainville="hp_stop_play">
         </v-weather>
         <div class="hp-footer">@copyright ElwinFrederick all rights reversed.</div>
         <v-audio
@@ -76,8 +77,7 @@ export default {
         cd_timer.callback = (str_time , is_stop) => {
             this.remain_time = str_time;
             if (is_stop) {
-                this.is_play = false;
-                this.mq_hd_stop_timer();
+                this.hp_stop_play();
             }
         }
     },
@@ -121,6 +121,11 @@ export default {
         mq_hd_stop_timer(){
             cd_timer.mq_cancel_timer();
             this.remain_time = "";
+        },
+        hp_stop_play() {
+            cd_timer.mq_cancel_timer();
+            this.remain_time = "";
+            this.is_play = false;
         },
 
         mq_cr_begin_play(item) {

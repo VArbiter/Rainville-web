@@ -1,7 +1,8 @@
 <template>
     <div class="wt" v-if="is_complete">
-        <div class="wt-img">
-            <i :class="iconfont"></i>
+        <div class="wt-img" @click.stop="wt_stop_playing">
+            <a v-if="wt_cn_flag" title="点击停止播放" :class="iconfont"></a>
+            <a v-else title="Click to stop." :class="iconfont"></a>
         </div>
         <div v-if="wt_cn_flag" class="wt-city-content">
             <div>{{`${data.wea}`}}</div>
@@ -61,6 +62,9 @@ export default {
             }).catch(e => {
                 that.is_complete = false;
             })
+        },
+        wt_stop_playing() {
+            this.$emit("wt_stop_rainville");
         }
     },
 }
@@ -79,7 +83,6 @@ export default {
 
     &-img {
         margin-top: 30px;
-        font-size: 50px;
     }
 
     &-city-content{

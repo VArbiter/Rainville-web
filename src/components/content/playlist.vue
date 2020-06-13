@@ -2,12 +2,12 @@
     <div class="cr">
         <transition name="fade">
             <div v-show="prop_show_play_list">
-                <ul v-if="prop_cn_flag" class="cr-volume-list">
+                <ul v-if="prop_cn_flag" class="cr-volume-list" :style="style_obj">
                     <li v-for="item in data_volume" :key="item.ol" @click.stop="cr_play_select(item)">
                         <a>{{ item.zh_hans }}</a>
                     </li>
                 </ul>
-                <ul v-else class="cr-volume-list">
+                <ul v-else class="cr-volume-list" :style="style_obj">
                     <li v-for="item in data_volume" :key="item.ol" @click.stop="cr_play_select(item)">
                         <a>{{ item.en }}</a>
                     </li>
@@ -22,11 +22,25 @@ export default {
     data() {
         return {
             data_volume:{},
+            style_obj:{}
         }
     },
 
     mounted() {
         this.data_volume = this.rainville.data_volume;
+        console.log(this.pc_or_mobile);
+        if (this.pc_or_mobile.is_pc) {
+            this.style_obj = {
+                backgroundColor: "rgba(255,255,255,.2)",
+                color: "#D4D5DA"
+            } 
+        }
+        else {
+            this.style_obj = {
+                backgroundColor: "rgb(255,255,255)",
+                color: "#272C32"
+            }
+        }
     },
 
     methods: {
@@ -54,9 +68,9 @@ export default {
     &-volume-list {
         margin-top: 20px;
         list-style: none;
-        background-color: $white-opacity-2;
+        background-color: $white-opacity-10;
         border-radius: 5px;
-        color:$text-white;
+        color:$text-black;
         font-size: $text-default-size;
         z-index: $z-index-large;
 

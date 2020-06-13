@@ -9,6 +9,10 @@ Vue.config.productionTip = false
 import rainville_Strings from "./assets/rainville_strings.json"
 Vue.prototype.rainville = rainville_Strings;
 
+import PCorMobile from "./operate/pcormobile.js"
+const pc_or_mobile_g = new PCorMobile();
+Vue.prototype.pc_or_mobile = pc_or_mobile_g;
+
 import axios from "axios"
 import VueAxios from "vue-axios"
 
