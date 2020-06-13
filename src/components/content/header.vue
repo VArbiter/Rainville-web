@@ -12,7 +12,7 @@ export default {
     name:"hd_header",
     data() {
         return {
-            btn_switch_name:"Switch to English",
+            btn_switch_name:"English",
             btn_list_name:"雨声",
             btn_about_name:"关于",
             btn_timer_name:"定时",
@@ -28,13 +28,13 @@ export default {
             this.$emit("change_cn_flag", this.cn_flag);
 
             if (this.cn_flag) {
-                this.btn_switch_name = "Switch to English";
+                this.btn_switch_name = "English";
                 this.btn_list_name = "雨声" ;
                 this.btn_about_name = "关于";
                 this.btn_timer_name = "定时";
                 this.btn_stop_hint = "单击停止";
             } else {
-                this.btn_switch_name = "切换为中文";
+                this.btn_switch_name = "中文";
                 this.btn_list_name = "Rain" ;
                 this.btn_about_name = "About";
                 this.btn_timer_name = "Timer";

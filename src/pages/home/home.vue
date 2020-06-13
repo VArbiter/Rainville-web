@@ -174,7 +174,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 50px;
+        padding-top: 30px;
 
         color: $text-white;
         vertical-align: bottom;
@@ -196,11 +196,10 @@ body {
 
     &-footer {
         width: 100%;
-        position:absolute;
         font-size: $text-small;
         color: $text-white;
         text-align:center;
-        bottom:20px;
+        margin-top: 30px;
     }
 }
 </style>
