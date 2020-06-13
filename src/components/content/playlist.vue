@@ -28,7 +28,6 @@ export default {
 
     mounted() {
         this.data_volume = this.rainville.data_volume;
-        console.log(this.pc_or_mobile);
         if (this.pc_or_mobile.is_pc) {
             this.style_obj = {
                 backgroundColor: "rgba(255,255,255,.2)",

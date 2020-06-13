@@ -56,7 +56,6 @@ export default {
             let that = this;
             this.axios.get(`https://tianqiapi.com/api?version=v6&appid=17557774&appsecret=rTId4nVR`)
             .then(res => {
-                console.log(res.data);
                 that.data = {...res.data};
                 that.iconfont = `iconfont icon-${that.data.wea_img}`;
             }).catch(e => {

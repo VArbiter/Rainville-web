@@ -18,10 +18,23 @@ import VueAxios from "vue-axios"
 
 Vue.use(VueAxios , axios);
 
+import Icon32 from "./assets/icon-32.png"
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+
+  mounted() {
+    // 转换为 标签
+    let s = `<link rel='icon' href='${Icon32}' sizes='32x32' type='image/png'>`;
+    var div = document.createElement('div');
+    div.innerHTML = s;
+    var link = div.childNodes[0];
+
+    var head = document.getElementsByTagName("head")[0];
+    head.appendChild(link);
+  }
 })
