@@ -1,0 +1,23 @@
+$main-color:#272C32;
+$icon-inner-color:#D4D5DA;
+$white-opacity-2: rgba(255,255,255,.2);
+$text-black: #333333;
+$text-white: #D4D5DA;
+$text-default-size: 14px;
+$text-large: 24px;
+$text-medium: 20px;
+$text-small: 10px;
+
+$z-index-large: 999;
+
+@mixin clearfix {
+    & {
+        zoom: 1;
+    }
+    &::after{
+        clear: both;  
+        content: " ";
+        display: block;
+        height: 0;
+    }
+}
