@@ -25,15 +25,9 @@
             :tl_show_timer_list="show_timer"
             @tl_posted_time="mq_tl_timer_begin">
         </v-timer>
-        <div class="hp-main">
-            <div class="hp-main-title">
-                {{app.app_name}} 
-                <span class="hp-main-desc">{{app.app_description}}</span>
-            </div>
-            <div class="hp-main-poem">
-                <div v-for="(item , idx) in poem" :key="idx">{{item}}</div>
-            </div>
-        </div>
+        <v-poem
+            :mp_cn_flag="cn_flag">
+        </v-poem>
         <v-weather
             :wt_cn_flag="cn_flag"
             @wt_stop_rainville="hp_stop_play">
@@ -50,6 +44,7 @@ import Playlist from '@/components/content/playlist.vue'
 import About from '@/components/content/about.vue'
 import Timerlist from '@/components/content/timerlist.vue'
 import HDHeader from '@/components/content/header.vue'
+import Poem from '@/components/content/Poem.vue'
 import Weather from '@/components/content/weather.vue'
 import AudioOperate from "@/operate/audio.vue"
 
@@ -90,13 +85,6 @@ export default {
         },
 
         mq_hd_lang_switch(flag) {
-            if (flag) {
-                this.app = this.rainville.display.zh_hans.app;
-            }
-            else {
-                this.app = this.rainville.display.en.app;
-            }
-            this.poem = this.app.app_poem.split("\n");
             this.cn_flag = flag;
         },
 
@@ -147,7 +135,8 @@ export default {
         "v-audio":AudioOperate,
         "v-about":About,
         "v-timer":Timerlist,
-        "v-weather":Weather
+        "v-weather":Weather,
+        "v-poem":Poem
     }
 }
 </script>
@@ -168,30 +157,6 @@ body {
     &-tl {
         position: absolute;
         right:20px;
-    }
-
-    &-main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 30px;
-
-        color: $text-white;
-        vertical-align: bottom;
-
-        &-title {
-            font-size: $text-large;
-        }
-        &-desc {
-            font-size: $text-small;
-        }
-        &-poem{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            margin-top: 20px;
-        }
     }
 
     &-footer {
