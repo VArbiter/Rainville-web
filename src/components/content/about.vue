@@ -7,14 +7,14 @@
                 <div class="ab-app-name">{{display.zh_hans.app.app_name}}</div>
                 <div class="ab-version">
                     <span>{{display.zh_hans.action.version}}</span>
-                    :1.0.1
+                    :1.0.2
                 </div>
             </div>
             <div v-else>
                 <div class="ab-app-name">{{display.en.app.app_name}}</div>
                 <div class="ab-version">
                     <span>{{display.en.action.version}}</span>
-                    :1.0.1
+                    :1.0.2
                 </div>
             </div>
             <a href="https://github.com/VArbiter" :style="style_a_obj">github.com/VArbiter</a>
